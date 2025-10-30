@@ -10,17 +10,16 @@ export function BugDetails() {
   const { bugId } = useParams();
 
   useEffect(() => {
-    loadBug();
-  }, []);
-
-  async function loadBug() {
-    try {
-      const bug = await bugService.getById(bugId);
-      setBug(bug);
-    } catch (err) {
-      showErrorMsg("Cannot load bug");
+    async function loadBug() {
+      try {
+        const bug = await bugService.getById(bugId);
+        setBug(bug);
+      } catch (err) {
+        showErrorMsg("Cannot load bug");
+      }
     }
-  }
+    loadBug();
+  }, [bugId]);
 
   if (!bug) return <h1>loadings....</h1>;
   return (

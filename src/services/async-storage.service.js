@@ -39,7 +39,7 @@ function put(entityType, updatedEntity) {
     );
     if (idx < 0)
       throw new Error(
-        `Update failed, cannot find entity with id: ${entityId} in: ${entityType}`,
+        `Update failed, cannot find entity with id: ${updatedEntity._id} in: ${entityType}`,
       );
     entities.splice(idx, 1, updatedEntity);
     _save(entityType, entities);
