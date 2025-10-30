@@ -15,12 +15,11 @@ export const bugService = {
 async function query() {
   const bugsResponse = await axios.get(BASE_URL);
   let bugs = bugsResponse.data;
-  console.log('bugs: ', bugs);
   return bugs;
 }
 async function getById(bugId) {
   const bugsResponse = await axios.get(BASE_URL + `${bugId}`);
-  let bug = bugsResponse;
+  let bug = bugsResponse.data;
   return bug;
 }
 async function remove(bugId) {
