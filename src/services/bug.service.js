@@ -12,8 +12,8 @@ export const bugService = {
   remove,
 };
 
-async function query() {
-  const bugsResponse = await axios.get(BASE_URL);
+async function query(reqParams) {
+  const bugsResponse = await axios.get(BASE_URL, { params: reqParams });
   let bugs = bugsResponse.data;
   return bugs;
 }

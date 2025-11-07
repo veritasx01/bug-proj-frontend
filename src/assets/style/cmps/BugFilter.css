@@ -1,0 +1,8 @@
+.fields-container {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fields-container > div > label { 
+  margin-right: 0.25rem;
+}

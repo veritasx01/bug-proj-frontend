@@ -3,18 +3,21 @@ import { showSuccessMsg, showErrorMsg } from "../services/event-bus.service.js";
 import { BugList } from "../cmps/BugList.jsx";
 import { useState } from "react";
 import { useEffect } from "react";
+import { BugFilter } from "./BugFilter.jsx";
+import { useSearchParams } from "react-router-dom";
 
 export function BugIndex() {
   const [bugs, setBugs] = useState([]);
+  const [params] = useSearchParams();
 
   useEffect(() => {
+    async function loadBugs() {
+      console.log("params", params);
+      const bugs = await bugService.query(params);
+      setBugs(bugs);
+    }
     loadBugs();
-  }, []);
-
-  async function loadBugs() {
-    const bugs = await bugService.query();
-    setBugs(bugs);
-  }
+  }, [params]);
 
   async function onRemoveBug(bugId) {
     try {
@@ -69,6 +72,7 @@ export function BugIndex() {
       <h3>Bugs App</h3>
       <main>
         <button onClick={onAddBug}>Add Bug ⛐</button>
+        <BugFilter></BugFilter>
         <BugList bugs={bugs} onRemoveBug={onRemoveBug} onEditBug={onEditBug} />
       </main>
     </section>
