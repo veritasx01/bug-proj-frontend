@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { showSuccessMsg } from "../services/event-bus.service";
 
 export function AppFooter() {
   useEffect(() => {
