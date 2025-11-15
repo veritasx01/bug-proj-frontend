@@ -18,11 +18,14 @@ export const userService = {
 };
 
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser';
-const BASE_URL = (process.env.NODE_ENV !== 'development') ?
-    '/api/' :
-    '//localhost:3030/api/'
+const BASE_URL =
+  process.env.NODE_ENV !== 'development' ? '/api/' : '//localhost:3030/api/';
+
 const BASE_USER_URL = BASE_URL + 'user/';
 const BASE_AUTH_URL = BASE_URL + 'auth/';
+
+console.log("user base:",BASE_USER_URL);
+console.log("auth base:",BASE_AUTH_URL);
 
 async function getUsers() {
   const { data: users } = await axios.get(BASE_USER_URL);

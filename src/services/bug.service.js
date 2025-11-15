@@ -7,6 +7,7 @@ const BASE_URL = (process.env.NODE_ENV !== 'development') ?
     '/api/bug/' :
     '//localhost:3030/api/bug/'
 
+console.log("bug base: ", BASE_URL);
 export const bugService = {
   query,
   getById,
